@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express()
 
-
 // routers
 const applicantRouter = require('./router/applicant')
 const instructorRouter = require('./router/instructor')
@@ -26,8 +25,6 @@ mongoose
   .catch((err) => {
     console.log("database not connected");
   });
-
-
 
 app.listen(port, () => {
   console.log("app runs on port ", port);

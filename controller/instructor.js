@@ -11,7 +11,7 @@ exports.signup = async (req, res) => {
 
     return res.status(201).send(savedInstructor);
   } catch (error) {
-    return res.status(403).send('Email already taken');
+    return res.status(403).send('Email already taken by another person');
 
   }
 };
