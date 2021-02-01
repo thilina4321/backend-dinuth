@@ -12,7 +12,7 @@ exports.login = async (req, res) => {
     console.log('log 1');
     const token = await applicant.generateToken()
     console.log('log 2');
-    res.status(200).send({applicant: applicant, token})
+    res.status(200).send({lernerOperator: applicant, token})
 
   } catch (err) {
       console.log(err.message);

@@ -11,7 +11,7 @@ exports.login = async (req, res) => {
       password: data.password,
     });
     const token = await applicant.generateToken()
-    res.status(200).send({applicant: applicant, token})
+    res.status(200).send({labOperator: applicant, token})
 
   } catch (err) {
       console.log(err.message);

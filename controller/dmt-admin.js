@@ -21,12 +21,12 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
   const data = req.body;
   try {
-    const applicant = await DmtAdmin.loginWithEmailAndPassword({
+    const dmtAdmin = await DmtAdmin.loginWithEmailAndPassword({
       email: data.email,
       password: data.password,
     });
-    const token = await applicant.generateToken()
-    res.status(200).send({applicant: applicant, token})
+    const token = await dmtAdmin.generateToken()
+    res.status(200).send({dmtAdmin: dmtAdmin, token})
 
   } catch (err) {
       console.log(err.message);
@@ -39,8 +39,8 @@ exports.createDoctor = async (req, res) => {
     const data = req.body;
     try {
       const hash = await bcrypt.hash(data.password, 8);
-      const applicant = await Doctor.create({ email: data.email, password: hash });
-      const savedApplicant = await applicant.save();
+      const doctor = await Doctor.create({ email: data.email, password: hash });
+      const savedApplicant = await doctor.save();
   
       return res.status(201).send(savedApplicant);
   } catch (error) {
