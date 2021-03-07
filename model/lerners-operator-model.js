@@ -8,13 +8,14 @@ const lernersOperator = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: [true, 'Email is alreday taken'],
     validate(value) {
       if (!validator.isEmail(value)) {
         throw new Error("Invalid email address");
       }
     },
   },
+  userName:{type:String, required:[true, 'User Name is required']},
   password: {
     type: String,
     required: true,

@@ -8,12 +8,12 @@ exports.signup = async (req, res) => {
   const data = req.body;
   try {
     const hash = await bcrypt.hash(data.password, 8);
-    const applicant = await DmtAdmin.create({ email: data.email, password: hash });
+    const applicant = await DmtAdmin.create({ email: data.email, password: hash, userName:data.userName });
     const savedApplicant = await applicant.save();
 
     return res.status(201).send(savedApplicant);
 } catch (error) {
-      return res.status(403).send('Email already taken');
+      return res.status(403).send({error:error.message});
      
   }
 };
@@ -39,12 +39,12 @@ exports.createDoctor = async (req, res) => {
     const data = req.body;
     try {
       const hash = await bcrypt.hash(data.password, 8);
-      const doctor = await Doctor.create({ email: data.email, password: hash });
+      const doctor = await Doctor.create({ email: data.email, password: hash, userName:data.userName });
       const savedApplicant = await doctor.save();
   
       return res.status(201).send(savedApplicant);
   } catch (error) {
-        return res.status(403).send('Email already taken');
+        return res.status(403).send({error:error.message});
       
     }
   };
@@ -54,12 +54,12 @@ exports.createDoctor = async (req, res) => {
     const data = req.body;
     try {
       const hash = await bcrypt.hash(data.password, 8);
-      const applicant = await LabOperator.create({ email: data.email, password: hash });
+      const applicant = await LabOperator.create({ email: data.email, password: hash, userName:data.userName });
       const savedApplicant = await applicant.save();
   
       return res.status(201).send(savedApplicant);
   } catch (error) {
-        return res.status(403).send('Email already taken');
+        return res.status(403).send({error:error.message});
       
     }
   };
@@ -69,12 +69,12 @@ exports.createDoctor = async (req, res) => {
     const data = req.body;
     try {
       const hash = await bcrypt.hash(data.password, 8);
-      const applicant = await LernesOperator.create({ email: data.email, password: hash });
+      const applicant = await LernesOperator.create({ email: data.email, password: hash, userName:data.userName });
       const savedApplicant = await applicant.save();
   
       return res.status(201).send(savedApplicant);
   } catch (error) {
-        return res.status(403).send('Email already taken');
+        return res.status(403).send({error:error.message});
       
     }
   };
